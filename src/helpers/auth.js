@@ -1,8 +1,7 @@
 import { ref, firebaseAuth } from '../config/constants'
-const userData = {
-    name : '',
-    lastname : ''
-}
+import {userData} from '../config/data'
+
+
 export  function setData(name,lastname) {
      userData.name = name
      userData.lastname = lastname
@@ -26,13 +25,13 @@ export function resetPassword (email) {
 
 export function saveUser (user) {
     console.log(userData.name)
-
     return ref.child(`users/${user.uid}/info`)
     .set({
         name:userData.name,
         lastName:userData.lastname,
         email: user.email,
         uid: user.uid,
+        photoURL:userData.photoURL
     })
     .then(() => user)
 }

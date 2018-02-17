@@ -4,6 +4,7 @@ import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
 import Login from './Login'
 import Register from './Register'
 import Home from './Home'
+import InputUpload from  './fireup'
 import Dashboard from './protected/Dashboard'
 import { logout } from '../helpers/auth'
 import { firebaseAuth } from '../config/constants'
@@ -92,10 +93,12 @@ export default class App extends Component {
             <div className="rsow">
               <Switch>
                   {this.state.authed
-                      ?<PrivateRoute authed={this.state.authed} path='/' component={Dashboard} />
+                      ?
+                      <PrivateRoute authed={this.state.authed} path='/' component={InputUpload} />
 
                       :<Route path='/' exact component={Home} />
                   }
+                  <PublicRoute authed={this.state.authed} path='/fu' component={InputUpload} />
                 <PublicRoute authed={this.state.authed} path='/login' component={Login} />
                 <PublicRoute authed={this.state.authed} path='/register' component={Register} />
                 <PrivateRoute authed={this.state.authed} path='/dashboard' component={Dashboard} />
