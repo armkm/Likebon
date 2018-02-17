@@ -65,6 +65,10 @@ label{
     width: 30%;
 }
 .content_set i{
-  color: #fff;
+  text-align: center;
   font-size: 50px;
+}
+.content_set{
+  color: #fff;
+
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { auth } from '../helpers/auth'
+import {auth, setData} from '../helpers/auth'
 
 function setErrorMsg(error) {
   return {
@@ -11,14 +11,25 @@ export default class Register extends Component {
   state = { registerError: null }
   handleSubmit = (e) => {
     e.preventDefault()
-    auth(this.email.value, this.pw.value)
+    auth(this.email.value, this.pw.value,this.name.value)
       .catch(e => this.setState(setErrorMsg(e)))
+      setData(this.name.value,this.lastName.value)
+      console.log(setData)
   }
   render () {
     return (
       <div className="col-sm-6 col-sm-offset-3">
         <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+                <label>name</label>
+                <input className="form-control" ref={(name) => this.name = name} placeholder="name"/>
+            </div>
+            <div className="form-group">
+                <label>lastname</label>
+                <input className="form-control" ref={(lastName) => this.lastName = lastName} placeholder="lastName"/>
+            </div>
+
           <div className="form-group">
             <label>Email</label>
             <input className="form-control" ref={(email) => this.email = email} placeholder="Email"/>

@@ -92,7 +92,7 @@ export default class App extends Component {
             <div className="rsow">
               <Switch>
                   {this.state.authed
-                      ?<PrivateRoute authed={this.state.authed} path='/dashboard' component={Dashboard} />
+                      ?<PrivateRoute authed={this.state.authed} path='/' component={Dashboard} />
 
                       :<Route path='/' exact component={Home} />
                   }

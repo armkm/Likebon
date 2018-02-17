@@ -1,8 +1,15 @@
-import { ref, firebaseAuth,provider } from '../config/constants'
-
-export function auth (email, pw) {
-  return firebaseAuth().createUserWithEmailAndPassword(email, pw)
-    .then(saveUser)
+import { ref, firebaseAuth } from '../config/constants'
+const userData = {
+    name : '',
+    lastname : ''
+}
+export  function setData(name,lastname) {
+     userData.name = name
+     userData.lastname = lastname
+}
+export function auth (email, pw ) {
+    return firebaseAuth().createUserWithEmailAndPassword(email, pw)
+      .then(saveUser)
 }
 
 export function logout () {
@@ -12,18 +19,20 @@ export function logout () {
 export function login (email, pw) {
     return firebaseAuth().signInWithEmailAndPassword(email, pw)
 }
-export function Facebooklogin () {
-    return provider().signInWithCustomToken();
-}
+
 export function resetPassword (email) {
   return firebaseAuth().sendPasswordResetEmail(email)
 }
 
 export function saveUser (user) {
-  return ref.child(`users/${user.uid}/info`)
+    console.log(userData.name)
+
+    return ref.child(`users/${user.uid}/info`)
     .set({
-      email: user.email,
-      uid: user.uid
+        name:userData.name,
+        lastName:userData.lastname,
+        email: user.email,
+        uid: user.uid,
     })
     .then(() => user)
 }

@@ -29,7 +29,7 @@ export default class Home extends Component {
         render () {
     return (
       <div className="row">
-          <div className="col-md-8 login-left">
+          <div className="col-sm-6 col-md-8 login-left hidden-xs">
               <div className="text-center">
                   <img src={logo} alt={"logo"} className="logo"/>
                   <h3>เว็บแอปพลิเคชันสำหรับเซอร์ไพรส์คนพิเศษ</h3>
@@ -56,7 +56,7 @@ export default class Home extends Component {
                   </div>
               </div>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 col-sm-6">
               <div className="row">
                   <div className="col-xs-1"></div>
                   <div className="col-md-10">
